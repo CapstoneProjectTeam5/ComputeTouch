@@ -1,0 +1,13 @@
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.exe.config
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.exe
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.pdb
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.csprojResolveAssemblyReference.cache
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.exe
+C:\Users\radu\Desktop\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.pdb
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.exe.config
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.exe
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\bin\Debug\ComputeTouchMeasurements.pdb
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.csprojAssemblyReference.cache
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.csproj.CoreCompileInputs.cache
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.exe
+C:\Users\ab892\OneDrive\바탕 화면\캡스톤\ComputeTouchMeasurements\ComputeTouchMeasurements\ComputeTouchMeasurements\obj\Debug\ComputeTouchMeasurements.pdb

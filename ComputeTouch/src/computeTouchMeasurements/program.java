@@ -46,11 +46,10 @@ class Program {
             int count = 0;
             File file = new File(outputFileName);
             
-            try (	
-            		FileWriter fw = new FileWriter(file, true);
-            		BufferedWriter bw = new BufferedWriter(fw);
-            		)
+            try(FileWriter fw = new FileWriter(file, true);
+            		BufferedWriter bw = new BufferedWriter(fw);)
             {
+            	
             	bw.write("participant,device,trial,multidragdropTime,multiAccuracy1,multiAccuracy2,multiAccuracy3,multiAccuracy4,multiAccuracy,multiPathAccuracy1,multiPathAccuracy2,multiPathAccuracy");
             	bw.newLine();
             	
@@ -64,7 +63,7 @@ class Program {
             		 
             		if (measurementType == MeasurementType.All) {
 	                    for (int i = 0; (i < actions.size()); i++) {
-	                        String s = String.format("%s,%d,%d,%f,%2f,%2f,%2f,%2f,%2f,%4f,%4f,%4f\n", participantName, deviceType, (i + 1),
+	                        String s = String.format("%s,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.4f,%.4f,%.4f\n", participantName, deviceType, (i + 1),
 	                        		actions.get(i).MultiTouchDragAndDropTime(), actions.get(i).MultiTouchDragAndDropAccuracy1(), actions.get(i).MultiTouchDragAndDropAccuracy2(), 
 	                        		actions.get(i).MultiTouchDragAndDropAccuracy3(), actions.get(i).MultiTouchDragAndDropAccuracy4(),
 	                        		actions.get(i).MultiTouchDragAndDropAccuracy(), actions.get(i).MultiTouchDragAndDropPathAccuracy1(),
@@ -77,7 +76,7 @@ class Program {
 	                    }
 	                }
 	                else if (measurementType == MeasurementType.Average) {
-	                    double avgTime = 0;
+	                    int avgTime = 0;
 	                    double avgOffset1 = 0;
 	                    double avgOffset2 = 0;
 	                    double avgOffset3 = 0;
@@ -108,7 +107,7 @@ class Program {
                             avgPathAccuracy2 /= actions.size();
                             avgPathAccuracy /= actions.size();
                             
-                            String s = String.format("%s,%d,%d,%f,%2f,%2f,%2f,%2f,%2f,%4f,%4f,%4f\n", participantName, deviceType, 0,
+                            String s = String.format("%s,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.4f,%.4f,%.4f\n", participantName, deviceType, 0,
                                 avgTime,
                                 avgOffset1, avgOffset2, avgOffset3, avgOffset4, avgOffset,
                                 avgPathAccuracy1, avgPathAccuracy2, avgPathAccuracy);
@@ -120,7 +119,7 @@ class Program {
 	                    }
 	                }
 	                else if (measurementType == MeasurementType.BestPerformance) {
-	                    double minTime = Double.MAX_VALUE;
+	                    int minTime = Integer.MAX_VALUE;
 	                    double minOffset1 = Double.MAX_VALUE;
 	                    double minOffset2 = Double.MAX_VALUE;
 	                    double minOffset3 = Double.MAX_VALUE;
@@ -152,7 +151,7 @@ class Program {
 	                    }
 	                    
 	                    if (actions.size() > 0) {
-	                        String s = String.format("%s,%d,%d,%f,%2f,%2f,%2f,%2f,%2f,%4f,%4f,%4f\n", participantName, deviceType, 0, minTime, minOffset1, minOffset2, minOffset3, minOffset4, minOffset, maxPathAccuracy1, maxPathAccuracy2, maxPathAccuracy);
+	                        String s = String.format("%s,%d,%d,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.4f,%.4f,%.4f\n", participantName, deviceType, 0, minTime, minOffset1, minOffset2, minOffset3, minOffset4, minOffset, maxPathAccuracy1, maxPathAccuracy2, maxPathAccuracy);
 	                        bw.write(s);
 	                    }
 	                    else {
@@ -173,10 +172,10 @@ class Program {
             File file = new File(outputFileName);
          
             try (
-            		FileWriter fw = new FileWriter(file, true);
-            		BufferedWriter bw = new BufferedWriter(fw);
-            		)
+            		 FileWriter fw = new FileWriter(file, true);
+                    BufferedWriter bw = new BufferedWriter(fw);)
             {
+            	
             	bw.write("participant,device,trial,sgldragdropTime,slgdragdropAccuracy1,sgldragdropAccuracy2,sgldragdropAccuracy,sgldragdropPathAccuracy");
             	bw.newLine();
             	
@@ -189,7 +188,7 @@ class Program {
             		count += actions.size();
             		if (measurementType == MeasurementType.All) {
             			for (int i = 0; i < actions.size(); i++) {
-            				String s = String.format("%s,%d,%d,%f,%2f,%2f,%2f,%4f\n", participantName, deviceType, (i + 1),
+            				String s = String.format("%s,%d,%d,%d,%.2f,%.2f,%.2f,%.4f\n", participantName, deviceType, (i + 1),
             						actions.get(i).SingleTouchDragAndDropTime(), actions.get(i).SingleTouchDragAndDropAccuracy1(), actions.get(i).SingleTouchDragAndDropAccuracy2(),
             						actions.get(i).SingleTouchDragAndDropAccuracy(), actions.get(i).SingleTouchDragAndDropPathAccuracy());
             				bw.write(s);
@@ -200,7 +199,7 @@ class Program {
                         }
             		}
             		else if (measurementType == MeasurementType.Average) {
-                        double avgTime = 0;
+                        int avgTime = 0;
                         double avgOffset1 = 0;
                         double avgOffset2 = 0;
                         double avgOffset = 0;
@@ -219,7 +218,7 @@ class Program {
                             avgOffset2 /= actions.size();
                             avgOffset /= actions.size();
                             avgPathAccuracy /= actions.size();
-                            String s = String.format("%s,%d,%d,%f,%2f,%2f,%2f,%4f\n", participantName, deviceType, 0, avgTime, avgOffset1, avgOffset2, avgOffset, avgPathAccuracy);
+                            String s = String.format("%s,%d,%d,%d,%.2f,%.2f,%.2f,%.4f\n", participantName, deviceType, 0, avgTime, avgOffset1, avgOffset2, avgOffset, avgPathAccuracy);
                             bw.write(s);
                         }
                         else {
@@ -228,7 +227,7 @@ class Program {
                         }                        
                     }
                     else if (measurementType == MeasurementType.BestPerformance) {
-                        double minTime = Double.MAX_VALUE;
+                        int minTime = Integer.MAX_VALUE;
                         double minOffset1 = Double.MAX_VALUE;
                         double minOffset2 = Double.MAX_VALUE;
                         double minOffset = Double.MAX_VALUE;
@@ -269,11 +268,14 @@ class Program {
             
             File file = new File(outputFileName);
             
-            try (
+            try(
             		FileWriter fw = new FileWriter(file, true);
-            		BufferedWriter bw = new BufferedWriter(fw);
+                    BufferedWriter bw = new BufferedWriter(fw);
             		)
             {
+
+                 
+
             	bw.write("participant,device,trial,dbltapTime,dbltapTime1,dbltapTime2,dbltapTimeBetween,dbltapAccuracy1,dbltapAccuracy2,dbltapAccuracy\n");
             	
             	File path = new File(baseFolder);
@@ -285,7 +287,7 @@ class Program {
             		count += actions.size();
             		if (measurementType == MeasurementType.All) {          		
             			for (int i = 0; i < actions.size(); i++) {
-            				String s = String.format("%s,%d,%d,%f,%f,%f,%f,%2f,%2f,%2f\n", participantName, deviceType, (i + 1),
+            				String s = String.format("%s,%d,%d,%d,%d,%d,%d,%.2f,%.2f,%.2f\n", participantName, deviceType, (i + 1),
             						actions.get(i).DoubleTapTime(), actions.get(i).DoubleTapTime_FirstTap(), actions.get(i).DoubleTapTime_SecondTap(),
             						actions.get(i).DoubleTapTime_InBetweenTaps(), actions.get(i).DoubleTapAccuracy_FirstTap(), actions.get(i).DoubleTapAccuracy_SecondTap(),
             						actions.get(i).DoubleTapAccuracy());
@@ -297,10 +299,10 @@ class Program {
                         }
             		}
             		else if (measurementType == MeasurementType.Average) {
-            			double avgDoubleTapTime = 0;
-                        double avgDoubleTapTime_FirstTap = 0;
-                        double avgDoubleTapTime_SecondTap = 0;
-                        double avgDoubleTapTime_InBetweenTaps = 0;
+            			int avgDoubleTapTime = 0;
+                        int avgDoubleTapTime_FirstTap = 0;
+                        int avgDoubleTapTime_SecondTap = 0;
+                        int avgDoubleTapTime_InBetweenTaps = 0;
                         double avgDoubleTapAccuracy_FirstTap = 0;
                         double avgDoubleTapAccuracy_SecondTap = 0;
                         double avgDoubleTapAccuracy = 0;
@@ -324,7 +326,7 @@ class Program {
                             avgDoubleTapAccuracy_SecondTap /= actions.size();
                             avgDoubleTapAccuracy /= actions.size();
                             
-                            String s = String.format("%s,%d,%d,%f,%f,%f,%f,%2f,%2f,%2f\n", participantName, deviceType, 0,
+                            String s = String.format("%s,%d,%d,%d,%d,%d,%d,%.2f,%.2f,%.2f\n", participantName, deviceType, 0,
                                     avgDoubleTapTime, avgDoubleTapTime_FirstTap, avgDoubleTapTime_SecondTap, avgDoubleTapTime_InBetweenTaps,
                                     avgDoubleTapAccuracy_FirstTap, avgDoubleTapAccuracy_SecondTap, avgDoubleTapAccuracy);
                            bw.write(s);
@@ -335,10 +337,10 @@ class Program {
                         }
                     }
                     else if (measurementType == MeasurementType.BestPerformance) {
-                    	 double minDoubleTapTime = Double.MAX_VALUE;
-                         double minDoubleTapTime_FirstTap = Double.MAX_VALUE;
-                         double minDoubleTapTime_SecondTap = Double.MAX_VALUE;
-                         double minDoubleTapTime_InBetweenTaps = Double.MAX_VALUE;
+                    	 int minDoubleTapTime = Integer.MAX_VALUE;
+                         int minDoubleTapTime_FirstTap = Integer.MAX_VALUE;
+                         int minDoubleTapTime_SecondTap = Integer.MAX_VALUE;
+                         int minDoubleTapTime_InBetweenTaps = Integer.MAX_VALUE;
                          double minDoubleTapAccuracy_FirstTap = Double.MAX_VALUE;
                          double minDoubleTapAccuracy_SecondTap = Double.MAX_VALUE;
                          double minDoubleTapAccuracy = Double.MAX_VALUE;
@@ -360,7 +362,7 @@ class Program {
                                  minDoubleTapAccuracy = actions.get(i).DoubleTapAccuracy();
                          }
                          if (actions.size() > 0) {
-                        	 String s = String.format("%s,%d,%d,%f,%f,%f,%f,%2f,%2f,%2f\n", participantName, deviceType, 0,
+                        	 String s = String.format("%s,%d,%d,%d,%d,%d,%d,%.2f,%.2f,%.2f\n", participantName, deviceType, 0,
                                  minDoubleTapTime, minDoubleTapTime_FirstTap, minDoubleTapTime_SecondTap, minDoubleTapTime_InBetweenTaps,
                                  minDoubleTapAccuracy_FirstTap, minDoubleTapAccuracy_SecondTap, minDoubleTapAccuracy);
                         	 bw.write(s);
@@ -383,11 +385,14 @@ class Program {
             
             File file = new File(outputFileName);
             
-            try (
+            try( 
             		FileWriter fw = new FileWriter(file, true);
-            		BufferedWriter bw = new BufferedWriter(fw);
+                    BufferedWriter bw = new BufferedWriter(fw);
+
             		)
             {
+
+                
             	bw.write("participant,device,trial,tapTime,tapAccuracy\n");
             	
             	File path = new File(baseFolder);
@@ -399,7 +404,7 @@ class Program {
             		count += actions.size();
             		if (measurementType == MeasurementType.All) {
             			for (int i = 0; i < actions.size(); i++) {
-            				String s = String.format("%s,%d,%d,%f,%2f\n", participantName, deviceType, i + 1, actions.get(i).TapTime(), actions.get(i).TapAccuracy());
+            				String s = String.format("%s,%d,%d,%d,%.2f\n", participantName, deviceType, i + 1, actions.get(i).TapTime(), actions.get(i).TapAccuracy());
             				bw.write(s);
             			}
             			for (int i = actions.size() + 1; i <= 5; i++) {
@@ -408,7 +413,7 @@ class Program {
                         }
             		}
             		else if (measurementType == MeasurementType.Average) {
-            			double avgTime = 0;
+            			int avgTime = 0;
                         double avgAccuracy = 0;
                         for (int i = 0; i < actions.size(); i++)
                         {
@@ -420,7 +425,7 @@ class Program {
                             avgTime /= actions.size();
                             avgAccuracy /= actions.size();
                             
-                            String s = String.format("%s,%d,%d,%f,%2f\n", participantName, deviceType, 0, avgTime, avgAccuracy);
+                            String s = String.format("%s,%d,%d,%d,%.2f\n", participantName, deviceType, 0, avgTime, avgAccuracy);
                             bw.write(s);
                         }
                         else {
@@ -429,7 +434,7 @@ class Program {
                         }
                     }
                     else if (measurementType == MeasurementType.BestPerformance) {
-                    	double minTime = Double.MAX_VALUE;
+                    	int minTime = Integer.MAX_VALUE;
                         double minOffset = Double.MAX_VALUE;
                         for (int i = 0; i < actions.size(); i++)
                         {
@@ -439,7 +444,7 @@ class Program {
                             	minOffset = actions.get(i).TapAccuracy();
                         }
                         if (actions.size() > 0) {
-                        	String s = String.format("%s,%d,%d,%f,%2f\n", participantName, deviceType, 0, minTime, minOffset);
+                        	String s = String.format("%s,%d,%d,%d,%.2f\n", participantName, deviceType, 0, minTime, minOffset);
                         	bw.write(s);
                         }
                         else {

@@ -42,7 +42,6 @@ public class TouchIO {
 			if (action.Type == TouchActionType.Tap || action.Type == TouchActionType.DoubleTap) {
 				int x = Integer.parseInt(TouchE.getAttributes().getNamedItem("TargetX").getNodeValue());
 				int y = Integer.parseInt(TouchE.getAttributes().getNamedItem("TargetY").getNodeValue());
-				
                 action.TargetPoint = new Point(x, y);
 			}
             if (action.Type == TouchActionType.SingleTouchDragAndDrop)
@@ -51,11 +50,9 @@ public class TouchIO {
 				int startY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StartTargetY").getNodeValue());
 				action.StartPoints.add(new Point(startX, startY));
 				
-				
 				int stopX = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetX").getNodeValue());
 				int stopY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetY").getNodeValue());               
                 action.StopPoints.add(new Point(stopX, stopY));
-                
             }
             if (action.Type == TouchActionType.MultiTouchDragAndDrop)
             {
@@ -63,14 +60,14 @@ public class TouchIO {
 				int startY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StartTargetY1").getNodeValue());
 				action.StartPoints.add(new Point(startX, startY));
 				
-				int stopX = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetX1").getNodeValue());
-				int stopY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetY1").getNodeValue());                
-                action.StopPoints.add(new Point(stopX, stopY));
-				
 				startX = Integer.parseInt(TouchE.getAttributes().getNamedItem("StartTargetX2").getNodeValue());
 				startY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StartTargetY2").getNodeValue());
 				action.StartPoints.add(new Point(startX, startY));
 				
+				int stopX = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetX1").getNodeValue());
+				int stopY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetY1").getNodeValue());                
+                action.StopPoints.add(new Point(stopX, stopY));
+                
 				stopX = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetX2").getNodeValue());
 				stopY = Integer.parseInt(TouchE.getAttributes().getNamedItem("StopTargetY2").getNodeValue());              
                 action.StopPoints.add(new Point(stopX, stopY));
@@ -90,6 +87,7 @@ public class TouchIO {
             		int x = Integer.parseInt(PointE.getAttributes().getNamedItem("X").getNodeValue());
             		int y = Integer.parseInt(PointE.getAttributes().getNamedItem("Y").getNodeValue());
             		int t = Integer.parseInt(PointE.getAttributes().getNamedItem("T").getNodeValue());
+            		
             		stroke.add(new Point(x, y, t));
             	}
             	action.Strokes.add(stroke);	// </Stroke>
@@ -98,6 +96,32 @@ public class TouchIO {
 		}
 		return touchActions;
     }
+    
+    /*
+    public static List<TouchAction> ReadTxtFile(String fileName) throws IOException {
+    	List<TouchAction> touchActions = new ArrayList<TouchAction>();
+    	TouchAction action = new TouchAction();
+		Stroke stroke = new Stroke();
+		
+		FileInputStream fis = new FileInputStream(new File("./SingleTap.txt"));
+		InputStreamReader isr = new InputStreamReader (fis);
+		BufferedReader br = new BufferedReader(isr);
+		String data;
+		int pointCnt = 0;
+
+		while ((data = br.readLine()) != null) {
+			// SingleTap.txt
+			if (pointCnt == 0) {
+				action.TargetPoint = new Point(137, 358);
+				String[] splited;
+				
+			}
+			
+		}
+    	
+		return touchActions;   	
+    }
+    */
     
     //  Converts task name into task id.
     private static TouchActionType TextToActionType(String text) {
